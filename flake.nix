@@ -6,34 +6,20 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-    }:
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+  }:
     flake-utils.lib.eachDefaultSystem (
-      system:
-      let
+      system: let
         pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        packages.default = pkgs.stdenv.mkDerivation {
-          name = "site_gen";
-          src = ./.;
-          buildInputs = [ pkgs.uv ];
-          buildPhase = ''
-          '';
-          installPhase = ''
-            mkdir -p $out/bin
-            cp output $out/bin
-          '';
-        };
-
+      in {
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             uv
             python3
+            black
           ];
         };
         formatter = pkgs.alejandra;

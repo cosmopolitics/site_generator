@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import override
 
+
 class TextType(Enum):
     text = "text"
     bold = "bold"
@@ -9,7 +10,8 @@ class TextType(Enum):
     link = "link"
     image = "image"
 
-class TextNode():
+
+class TextNode:
     def __init__(self, text: str, text_type: TextType, url: str | None = None):
         self.text: str = text
         self.text_type: TextType = text_type
@@ -18,8 +20,8 @@ class TextNode():
     @override
     def __eq__(self, other_node) -> bool:
         return (
-            self.text == other_node.text 
-            and self.text_type == other_node.text_type 
+            self.text == other_node.text
+            and self.text_type == other_node.text_type
             and self.url == other_node.url
         )
 
