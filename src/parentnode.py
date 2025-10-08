@@ -1,5 +1,5 @@
 from typing import override
-from htmlnode import HtmlNode
+from src.htmlnode import HtmlNode
 
 
 class ParentNode(HtmlNode):

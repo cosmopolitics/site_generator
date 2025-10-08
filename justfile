@@ -2,4 +2,4 @@ run:
   python3 src/main.py
 
 test:
-  python3 -m unittest discover -s src
+  python3 -m unittest discover -s src/tests
