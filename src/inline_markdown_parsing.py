@@ -18,20 +18,23 @@ def split_nodes_delimiter(
         for i in range(0, len(split_text)):
             if i % 2 == 1:
                 new_nodes.append(TextNode(split_text[i], text_type, None))
-            elif split_text[i] != '':
+            elif split_text[i] != "":
                 new_nodes.append(TextNode(split_text[i], TextType.text, None))
 
     return new_nodes
+
 
 def extract_markdown_images(text: str) -> list[tuple[str, str]]:
     pattern = r"!\[([^\[\]]*)\]\(([^\(\)]*)\)"
     matches = re.findall(pattern, text)
     return matches
 
+
 def extract_markdown_links(text: str) -> list[tuple[str, str]]:
     pattern = r"(?<!!)\[([^\[\]]*)\]\(([^\(\)]*)\)"
     matches = re.findall(pattern, text)
     return matches
+
 
 def split_nodes_image(nodes: list[TextNode]) -> list[TextNode]:
     new_nodes: list[TextNode] = []
@@ -61,6 +64,7 @@ def split_nodes_image(nodes: list[TextNode]) -> list[TextNode]:
             new_nodes.append(TextNode(original_text, TextType.text))
     return new_nodes
 
+
 def split_nodes_link(nodes: list[TextNode]) -> list[TextNode]:
     new_nodes: list[TextNode] = []
     for old_node in nodes:
@@ -83,6 +87,7 @@ def split_nodes_link(nodes: list[TextNode]) -> list[TextNode]:
         if original_text != "":
             new_nodes.append(TextNode(original_text, TextType.text))
     return new_nodes
+
 
 def text_to_textnodes(text: str):
     nodes = [TextNode(text, TextType.text)]

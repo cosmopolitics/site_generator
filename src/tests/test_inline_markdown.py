@@ -94,7 +94,9 @@ class TestInlineMarkdown(unittest.TestCase):
         matches = extract_markdown_links(
             "This is text with an [link to imgur](https://i.imgur.com/zjjcJKZ.png)"
         )
-        self.assertListEqual([("link to imgur", "https://i.imgur.com/zjjcJKZ.png")], matches)
+        self.assertListEqual(
+            [("link to imgur", "https://i.imgur.com/zjjcJKZ.png")], matches
+        )
 
     def test_split_images(self):
         node = TextNode(
@@ -102,7 +104,7 @@ class TestInlineMarkdown(unittest.TestCase):
             TextType.text,
         )
         new_nodes = split_nodes_image([node])
-        self.maxDiff = None;
+        self.maxDiff = None
         self.assertListEqual(
             [
                 TextNode("This is text with an ", TextType.text),
@@ -165,6 +167,7 @@ class TestInlineMarkdown(unittest.TestCase):
             ],
             nodes,
         )
+
 
 if __name__ == "__main__":
     _ = unittest.main()
