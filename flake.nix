@@ -20,6 +20,8 @@
             uv
             python3
             black
+            bootdev-cli
+            go
           ];
         };
         formatter = pkgs.alejandra;
